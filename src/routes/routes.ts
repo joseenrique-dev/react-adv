@@ -8,9 +8,15 @@ interface IRoute {
   Component: LazyExoticComponent<JSXComponent> | JSXComponent;
 }
 
-const Lazy1 = lazy(() => import('../01-lazyload/LazyPage1'));
-const Lazy2 = lazy(() => import('../01-lazyload/LazyPage2'));
-const Lazy3 = lazy(() => import('../01-lazyload/LazyPage3'));
+const Lazy1 = lazy(
+  () => import(/*webpackChunkName:"Lazypage1"*/ '../01-lazyload/LazyPage1')
+);
+const Lazy2 = lazy(
+  () => import(/*webpackChunkName:"Lazypage2"*/ '../01-lazyload/LazyPage2')
+);
+const Lazy3 = lazy(
+  () => import(/*webpackChunkName:"Lazypage3"*/ '../01-lazyload/LazyPage3')
+);
 
 export const routes: IRoute[] = [
   {
