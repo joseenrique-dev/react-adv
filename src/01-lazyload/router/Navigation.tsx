@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
+import { Redirect, Link, useRouteMatch, Switch, Route } from 'react-router-dom';
 import { LazyPage1, LazyPage2, LazyPage3 } from '../pages';
 
 export const Navigation = () => {
@@ -27,6 +27,7 @@ export const Navigation = () => {
         <Route path={`${path}/lazy3`}>
           <LazyPage3 />
         </Route>
+        <Redirect to={`${path}/lazy1`} />
       </Switch>
     </>
   );
