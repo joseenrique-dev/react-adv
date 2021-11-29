@@ -3,7 +3,7 @@ import noImage from '../assets/no-image.jpg';
 import { ProductContext } from './ProductCard';
 import styles from '../styles/styles.module.css';
 
-interface Props {
+export interface Props {
   img?: string;
   className?: string;
 }
