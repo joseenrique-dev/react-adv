@@ -89,6 +89,7 @@ export const ShoppingPage = () => {
               product={productInCart}
               className='bg-dark text-white'
               style={{ width: '100px' }}
+              value={productInCart.count}
             >
               <ProductImage
                 style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
