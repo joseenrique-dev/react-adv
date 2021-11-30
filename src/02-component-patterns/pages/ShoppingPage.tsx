@@ -82,33 +82,28 @@ export const ShoppingPage = () => {
         ))}
       </div>
       <div className='shopping-card'>
-        <ProductCard
-          key={product2.id}
-          product={product2}
-          className='bg-dark text-white'
-          style={{ width: '100px' }}
-        >
-          <ProductImage
-            style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
-            className='bg-dark text-bold'
-          />
-          <ProductButton className='custom-buttons' />
-        </ProductCard>
-        <ProductCard
-          key={product1.id}
-          product={product1}
-          className='bg-dark text-white'
-          style={{ width: '100px' }}
-        >
-          <ProductImage
-            style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
-            className='bg-dark text-bold'
-          />
-          <ProductButton className='custom-buttons' />
-        </ProductCard>
+        {Object.entries(shoppingCart).map(([key, productInCart]) => {
+          return (
+            <ProductCard
+              key={key}
+              product={productInCart}
+              className='bg-dark text-white'
+              style={{ width: '100px' }}
+            >
+              <ProductImage
+                style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
+                className='bg-dark text-bold'
+              />
+              <ProductButton
+                className='custom-buttons'
+                style={{ display: 'flex', justifyContent: 'center' }}
+              />
+            </ProductCard>
+          );
+        })}
       </div>
       <div>
-        <code>{JSON.stringify(shoppingCart, null, 5)}</code>
+        <code>{JSON.stringify(Object.entries(shoppingCart), null, 5)}</code>
       </div>
     </div>
   );
