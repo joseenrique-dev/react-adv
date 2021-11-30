@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ProductButton,
   ProductCard,
@@ -6,18 +7,53 @@ import {
 } from '../components';
 import { Product } from '../interfaces/interfaces';
 import '../styles/custom-styles.css';
+
 const product1 = {
-  id: '',
+  id: '1',
   title: 'Cofee Mug - Card',
   img: './coffee-mug.png',
 };
 const product2 = {
-  id: '',
+  id: '2',
   title: 'Cofee Mug - Meme',
   img: './coffee-mug2.png',
 };
 const products: Product[] = [product1, product2];
+
+interface ProductInCart extends Product {
+  count: number;
+}
+
 export const ShoppingPage = () => {
+  const [shoppingCart, setShoppingCart] = useState<{
+    [key: string]: ProductInCart;
+  }>({});
+
+  const onProductCountChange = ({
+    count,
+    product,
+  }: {
+    count: number;
+    product: Product;
+  }) => {
+    console.log('onProductCountChange', count, product);
+
+    setShoppingCart((oldChoppingCart) => {
+      if (count === 0) {
+        const { [product.id]: toDelete, ...rest } = oldChoppingCart;
+        console.log('REMOVE', [toDelete, rest]);
+        return rest;
+      }
+      return {
+        ...oldChoppingCart,
+        [product.id]: {
+          ...product,
+          count,
+        },
+      };
+    });
+  };
+
   return (
     <div>
       <h1>Shopping Store</h1>
@@ -34,6 +70,7 @@ export const ShoppingPage = () => {
             key={product.id}
             product={product}
             className='bg-dark text-white'
+            onChange={onProductCountChange}
           >
             <ProductImage
               style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
@@ -69,6 +106,9 @@ export const ShoppingPage = () => {
           />
           <ProductButton className='custom-buttons' />
         </ProductCard>
+      </div>
+      <div>
+        <code>{JSON.stringify(shoppingCart, null, 5)}</code>
       </div>
     </div>
   );
