@@ -6,6 +6,7 @@ import {
   ProductContextProps,
   Product,
   onChangeArgs,
+  InitialValues,
 } from '../interfaces/interfaces';
 import { ProductImage } from './ProductImage';
 import { ProductTitle } from './ProductTitle';
@@ -18,6 +19,7 @@ export interface Props {
   style?: CSSProperties;
   onChange?: (args: onChangeArgs) => void;
   value?: number;
+  initialValues: InitialValues;
 }
 
 export const ProductContext = createContext({} as ProductContextProps);
@@ -30,8 +32,14 @@ export const ProductCard = ({
   style,
   onChange,
   value,
+  initialValues,
 }: Props) => {
-  const { counter, increaseBy } = useProduct({ onChange, product, value });
+  const { counter, increaseBy } = useProduct({
+    onChange,
+    product,
+    value,
+    initialValues,
+  });
 
   return (
     <Provider value={{ counter, increaseBy, product }}>
