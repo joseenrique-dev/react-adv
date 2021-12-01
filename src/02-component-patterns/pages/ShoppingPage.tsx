@@ -13,7 +13,6 @@ export const ShoppingPage = () => {
     <div>
       <h1>Shopping Store</h1>
       <hr />
-
       <ProductCard
         key={product.id}
         product={product}
@@ -23,12 +22,16 @@ export const ShoppingPage = () => {
           maxCount: 10,
         }}
       >
-        <ProductImage
-          style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
-          className='bg-dark text-bold'
-        />
-        <ProductTitle style={{ fontWeight: 'bold' }} />
-        <ProductButton className='custom-buttons' />
+        {() => (
+          <>
+            <ProductImage
+              style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
+              className='bg-dark text-bold'
+            />
+            <ProductTitle style={{ fontWeight: 'bold' }} />
+            <ProductButton className='custom-buttons' />
+          </>
+        )}
       </ProductCard>
     </div>
   );
