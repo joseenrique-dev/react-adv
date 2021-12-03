@@ -4,13 +4,62 @@
     "name": "firstName",
     "placeholder": "Pipito",
     "label": "First Name",
-    "value": ""
+    "value": "",
+    "validations": [
+      {
+        "type": "requiered"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
   },
   {
     "type": "input",
     "name": "lastName",
     "placeholder": "López ...",
     "label": "Last Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "requiered"
+      }
+    ]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "dummy@lolo.com",
+    "label": "Email",
+    "value": "",
+    "validations": [
+      {
+        "type": "requiered"
+      },
+      {
+        "type": "email"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "favoriteGame",
+    "label": "Email",
+    "options": [
+      {
+        "id": 1,
+        "label": "Super Smash"
+      },
+      {
+        "id": 2,
+        "label": "Metal Gear"
+      },
+      {
+        "id": 3,
+        "label": "Resident Evil"
+      }
+    ],
     "value": ""
   }
 ]
