@@ -1,4 +1,3 @@
-import { FormEvent } from 'react';
 import { useForm } from '../hooks/useForm';
 import '../styles/styles.css';
 import { Form, Formik } from 'formik';
@@ -6,16 +5,7 @@ import * as Yup from 'yup';
 import { MyTextInput } from '../components';
 
 export const RegisterFormikPage = () => {
-  const {
-    name,
-    email,
-    password,
-    password2,
-    formData,
-    onChange,
-    resetForm,
-    isValidEmail,
-  } = useForm({
+  const { name, email, password, password2 } = useForm({
     name: '',
     email: '',
     password: '',
@@ -47,7 +37,7 @@ export const RegisterFormikPage = () => {
             .oneOf([Yup.ref('password'), null], 'Passwords must match'),
         })}
       >
-        {() => (
+        {({ handleReset }) => (
           <Form>
             <MyTextInput label='Name' name='name' placeholder='Pipito' />
 
@@ -61,7 +51,7 @@ export const RegisterFormikPage = () => {
 
             <MyTextInput label='Confirm Password' name='password2' />
             <button type='submit'>Send</button>
-            <button onClick={resetForm}>Reset Form</button>
+            <button onClick={handleReset}>Reset Form</button>
           </Form>
         )}
       </Formik>
