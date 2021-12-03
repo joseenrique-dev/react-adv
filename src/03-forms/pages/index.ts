@@ -1,3 +1,4 @@
+export { RegisterFormikPage } from './RegisterFormikPage';
 export { FormikYupPage } from './FormikYupPage';
 export { RegisterPage } from './RegisterPage';
 export { FormikConsumer } from 'formik';
